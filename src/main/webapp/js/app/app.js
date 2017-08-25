@@ -1,6 +1,7 @@
 Ext.application({
 	name : 'AM',
-	appFolder : '../js/app',
+	appFolder : '/FirstMaven/js/app',
+//	appFolder : '../js/app',
 	launch : function() {
 		Ext.create(
 			'Ext.container.Viewport',
