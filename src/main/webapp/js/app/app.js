@@ -1,6 +1,6 @@
 Ext.application({
 	name : 'AM',
-	appFolder : 'app',
+	appFolder : '../js/app',
 	launch : function() {
 		Ext.create(
 			'Ext.container.Viewport',
