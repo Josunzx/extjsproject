@@ -9,9 +9,7 @@ Ext.application({
 				layout : 'fit',
 				items : [
 				  {
-				  	xtype : 'panel',
-				  	title : 'Users',
-				  	html : '<a href="http://www.baidu.com">红色</a>'
+					  xtype: 'userlist'
 				  }
 				]
 			}

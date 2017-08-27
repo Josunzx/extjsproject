@@ -8,6 +8,9 @@ Ext.define('AM.controller.UserController', {
           }
       });
   },
+  views: [
+      'user.List'
+  ],
 
   onPanelRendered: function() {
       console.log('The panel was rendered');
