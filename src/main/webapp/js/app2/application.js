@@ -5,7 +5,7 @@
 // 当它被设置为true的时候，应用程序会自动创建Viewport，这个Viewport的定义在我们的app/view/viewport.js中；
 // 如果为false的时候，我们需要在launch中手动创建相应的视图。
 //
-Ext.application({ name : "MyApp", appFolder : 'app', controllers : [
+Ext.application({ name : "MyApp", appFolder : '../js/app2', controllers : [
 	"User"
 ], autoCreateViewport : true, launch : function() {
 // 页面加载完成之后执行
