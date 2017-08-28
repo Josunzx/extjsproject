@@ -6,11 +6,13 @@ Ext.define('AM.controller.UserController', {
 			'userlist' : { itemdblclick : this.editUser } });
 	},
 	views : [
-		'user.List'
+		'user.List', 'user.Edit'
 	],
 	onPanelRendered : function() {
 		console.log('The panel was rendered');
 	},
 	editUser : function(grid, record) {
-		console.log('Double clicked on ' + record.get('name'));
+// console.log('Double clicked on ' + record.get('name'));
+		var view = Ext.widget('useredit');
+		view.down('form').loadRecord(record);
 	} });
