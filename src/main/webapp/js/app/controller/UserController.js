@@ -15,7 +15,12 @@ Ext.define('AM.controller.UserController', {
 		'user.List', 'user.Edit'
 	],
 	updateUser : function(button) {
-		console.log('clicked the Save button');
+		var win = button.up('window'), form = win.down('form'), record = form
+		.getRecord(), values = form.getValues();
+		record.set(values);
+		win.close();
+		// 保证服务的同步编辑
+		this.getUsersStore().sync();
 	},
 	editUser : function(grid, record) {
 // console.log('Double clicked on ' + record.get('name'));
