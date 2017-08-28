@@ -2,8 +2,8 @@ Ext.define('AM.controller.UserController', {
 	extend : 'Ext.app.Controller',
 	init : function() {
 		this.control({
-// 'viewport > panel' : { render : this.onPanelRendered },
-		'userlist' : { itemdblclick : this.editUser } });
+			'viewport > userlist' : { itemdblclick : this.editUser },
+			'useredit button[action=save]' : { click : this.updateUser } });
 	},
 	stores : [
 		'Users'
@@ -14,6 +14,9 @@ Ext.define('AM.controller.UserController', {
 	views : [
 		'user.List', 'user.Edit'
 	],
+	updateUser : function(button) {
+		console.log('clicked the Save button');
+	},
 	editUser : function(grid, record) {
 // console.log('Double clicked on ' + record.get('name'));
 		var view = Ext.widget('useredit');
