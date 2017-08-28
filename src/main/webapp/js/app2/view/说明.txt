@@ -1,0 +1,5 @@
+为了实现列表和编辑功能，我们需要两个视图，分别是list和edit，那么view的结构如下：
+app/view/user/List.js
+app/view/user/Edit.js
+
+对于view类的创建，我们需要定义alias，这是为了方便我们通过xtype来创建该组件的实例。（如果没有alias，我们将很难在viewport和controller中使用）
