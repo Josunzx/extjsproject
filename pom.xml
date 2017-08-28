@@ -2,7 +2,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>mavenProject</groupId>
-	<artifactId>FirstMaven</artifactId>
+	<artifactId>firstMaven</artifactId>
 	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>FirstMaven Maven Webapp</name>
@@ -175,7 +175,7 @@
 				</configuration>
 			</plugin>
 		</plugins>
-		<finalName>FirstMaven</finalName>
+		<finalName>firstMaven</finalName>
 	</build>
 	<repositories>
 		<!-- 增加阿里maven库 -->

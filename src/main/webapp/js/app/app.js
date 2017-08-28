@@ -1,6 +1,6 @@
 Ext.application({
 	name : 'AM',
-	appFolder : '/FirstMaven/js/app',
+	appFolder : '/firstMaven/js/app',
 //	appFolder : '../js/app',
 	launch : function() {
 		Ext.create(
