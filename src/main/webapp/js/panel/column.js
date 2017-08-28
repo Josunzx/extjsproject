@@ -8,6 +8,7 @@ Ext.application({
 			x : 20,
 			y : 100,
 			layout : 'column',
+			//比例超100%，会有换行的现象
 			items : [
 				{ title : 'Column 1', columnWidth : .25 },
 				{ title : 'Column 2', columnWidth : .55 },
