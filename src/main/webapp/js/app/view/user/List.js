@@ -4,7 +4,7 @@ Ext.define('AM.view.user.List', {
 	title : 'All Users',
 	store : 'Users',//有此项，可省略store
 	initComponent : function() {
-		this.columns = [//columns不能丢失
+		this.columns = [//columns不能丢失 
 			{ header : 'Name', dataIndex : 'name', flex : 1 },
 			{ header : 'Email', dataIndex : 'email', flex : 1 }
 		];
