@@ -13,8 +13,8 @@
     http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
     http://www.springframework.org/schema/cache 
     http://www.springframework.org/schema/cache/spring-cache-4.0.xsd">
-	<!-- 自动扫描 TODO -->
-	<context:component-scan base-package="com.yuannote" />
+	<!-- 启动事务注解 -->
+	<tx:annotation-driven transaction-manager="transactionManager" />
 	<!-- 读取数据库连接的属性文件 -->
 	<!-- <context:property-placeholder location="classpath:jdbc.properties" 
 		/> -->
@@ -80,31 +80,4 @@
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 
-	<!-- 配置事务增强处理Bean，指定事务管理器 -->
-	<tx:advice id="transactionAdvice" transaction-manager="transactionManager">
-		<!-- 配置详细事务处理语义 -->
-		<tx:attributes>
-			<tx:method name="insert*" propagation="REQUIRED" />
-			<tx:method name="update*" propagation="REQUIRED" />
-			<tx:method name="delete*" propagation="REQUIRED" />
-
-			<tx:method name="get*" propagation="SUPPORTS" read-only="true" />
-			<tx:method name="find*" propagation="SUPPORTS" read-only="true" />
-			<tx:method name="select*" propagation="SUPPORTS" read-only="true" />
-			<tx:method name="load*" propagation="SUPPORTS" read-only="true" />
-
-			<!-- 其他采用默认事务方式 -->
-			<tx:method name="*" />
-
-		</tx:attributes>
-	</tx:advice>
-
-	<!-- Spring aop事务管理 -->
-	<aop:config>
-		<!-- 配置切入点 -->
-		<aop:pointcut id="transactionPointcut" expression="execution(* com.*.service..*(..))" />
-		<!-- 指定在txAdvice切入点应用txAdvice事务增强处理 -->
-		<aop:advisor pointcut-ref="transactionPointcut"
-			advice-ref="transactionAdvice" />
-	</aop:config>
 </beans>
