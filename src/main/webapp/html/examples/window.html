@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Window实例</title>
+<link rel="stylesheet" type="text/css"
+	href="../../resources/css/ext-all.css">
+<script type="text/javascript" src="../../js/common/bootstrap.js"></script>
+<script type="text/javascript" src="../../js/common/ext-lang-zh_CN.js"></script>
+<script type="text/javascript">
+	Ext.require('Ext.window');
+	Ext.onReady(function() {
+		Ext.create('Ext.Window', { width : 400, height : 230,
+		//X,Y标识窗口相对于父窗口的偏移值。 
+		x : 10, y : 10, plain : true,
+		//指示标题头的位置,分别为 top,bottom,left,right,默认为top 
+		headerPosition : 'left', title : 'ExtJS4 Window的创建，头在左' }).show();
+		Ext.create('Ext.Window', {
+			width : 400,
+			height : 230,
+			x : 500,
+			y : 10,
+			plain : false,
+			//指示标题头的位置,分别为 top,bottom,left,right,默认为top 
+			headerPosition : 'right',
+			title : 'ExtJS4 Window的创建，头在右' }).show();
+		Ext.create('Ext.Window', {
+			width : 400,
+			height : 230,
+			x : 10,
+			y : 300,
+			plain : true,
+			//指示标题头的位置,分别为 top,bottom,left,right,默认为top 
+			headerPosition : 'bottom',
+			title : 'ExtJS4 Window的创建，头在底' }).show();
+		var win = Ext.create('Ext.Window', {
+			width : 400,
+			height : 230,
+			x : 500,
+			y : 300,
+			plain : true,
+			//指示标题头的位置,分别为 top,bottom,left,right,默认为top 
+			headerPosition : 'top',
+			title : 'ExtJS4 Window的创建，头在上' });
+		win.show();
+	});
+</script>
+</head>
+<body>
+
+</body>
+</html>

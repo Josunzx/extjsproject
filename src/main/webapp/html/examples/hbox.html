@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>HBox实例</title>
+<link rel="stylesheet" type="text/css"
+	href="../../resources/css/ext-all.css">
+<script type="text/javascript" src="../../js/common/bootstrap.js"></script>
+<script type="text/javascript" src="../../js/common/ext-lang-zh_CN.js"></script>
+<script type="text/javascript">
+	//align : String
+	//控制子组件在容器中的对齐方式, 此参数的有效值有以下几个:
+	//    top : 默认值 各子组件在容器顶部水平对齐（默认）.
+	//    middle : 各子组件在容器中间水平对齐.
+	//    stretch : 各子组件的高度拉伸至与容器的高度相等.
+	//    stretchmax : 各子组件的高度拉伸至与最高的子组件的高度相等.
+	//
+	//pack: String
+	//控制子组件如何被打包在一起. 此属性的有效值为:
+	//    start - 子组件被包在一起放在容器的左边 (默认)
+	//    center - 子组件被包在一起放在容器里居中
+	//    end - 子组件被包在一起放在容器的右边
+	//
+	//scale : String
+	//指定按钮的大小：
+	//    'small' - 定义按钮的高度为16px（默认）.
+	//    'medium' - 定义按钮的高度为24px.
+	//    'large' - 定义按钮的高度为32px
+	Ext.onReady(function() {
+		var d1 = Ext.create('Ext.Panel', {
+			title : 'HBox 顶对齐，且组件在容器的左边',
+			frame : true,
+			width : 600,
+			height : 100,
+			items : [
+				{
+					anchor : '100%',
+					layout : {
+						type : 'hbox',
+						padding : '10',
+						pack : 'start',
+						align : 'top' },
+					defaults : { margins : '0 5 0 0' },
+					items : [
+						{ xtype : 'button', text : 'Button 1' },
+						{ xtype : 'button', text : 'Button 2' },
+						{ xtype : 'button', text : 'Button 3' },
+						{ xtype : 'button', text : 'Button 4' }
+					] }
+			] })
+		d1.render('d1');
+		var d2 = Ext.create('Ext.Panel', {
+			title : 'HBox 垂直对齐，且组件在容器的右边',
+			frame : true,
+			width : 600,
+			height : 100,
+			items : [
+				{
+					anchor : '100%',
+					layout : {
+						type : 'hbox',
+						padding : '10',
+						align : 'middle',
+						pack : 'end' },
+					defaults : { margins : '0 5 0 0' },
+					items : [
+						{ xtype : 'button', text : 'Button 1' },
+						{ xtype : 'button', text : 'Button 2' },
+						{ xtype : 'button', text : 'Button 3' },
+						{ xtype : 'button', text : 'Button 4' }
+					] }
+			] })
+		d2.render('d2');
+		var d3 = Ext.create('Ext.Panel', {
+			title : 'HBox 垂直水平居中，并且所有控件高度为最高控件的高度',
+			frame : true,
+			width : 600,
+			height : 100,
+			items : [
+				{
+					anchor : '100%',
+					layout : {
+						type : 'hbox',
+						padding : '5',
+						align : 'stretchmax',
+						pack : 'center' },
+					defaults : { margins : '0 5 0 0' },
+					items : [
+						{ xtype : 'button', text : 'Small Size' },
+						{ xtype : 'button', scale : 'medium', text : 'Medium Size' },
+						{ xtype : 'button', scale : 'large', text : 'Large Size' }
+					] }
+			] })
+		d3.render('d3');
+	})
+</script>
+</head>
+<body>
+
+	<div id="d1"></div>
+	<div id="d2"></div>
+	<div id="d3"></div>
+
+</body>
+</html>
