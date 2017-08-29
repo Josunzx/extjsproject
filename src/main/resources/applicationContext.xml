@@ -44,4 +44,5 @@
 		<property name="prefix" value="/WEB-INF/jsp/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
+	<import resource="classpath:applicationContext-dao.xml"/>
 </beans>
