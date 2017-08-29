@@ -5,7 +5,7 @@ Ext.define('User', {
 	],
 	proxy : {
 		type : 'rest',
-		url : 'data/users',
+		url : '/firstMaven/user/getUsers',
 		reader : { type : 'json', root : 'users' } },
 	hasMany : 'Post' // shorthand for { model: 'Post', name: 'posts' } 
 	}); 
