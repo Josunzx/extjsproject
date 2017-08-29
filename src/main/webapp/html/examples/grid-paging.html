@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>grid分页实例</title>
+<link rel="stylesheet" type="text/css"
+	href="../../resources/css/ext-all.css">
+<script type="text/javascript" src="../../js/common/bootstrap.js"></script>
+<script type="text/javascript" src="../../js/common/ext-lang-zh_CN.js"></script>
+<script type="text/javascript">
+	Ext.require([
+		'Ext.grid.*', 'Ext.toolbar.Paging', 'Ext.data.*'
+	]);
+	Ext.onReady(function() {
+		Ext.define('MyData', { 
+			extend : 'Ext.data.Model', 			
+			fields : [
+  				{ name : 'UserName', type : 'string' },
+  				{ name : 'Sex', type : 'string' },
+  				{ name : 'Age', type : 'int' },
+  				{ name : 'XueHao', type : 'string' },
+  				{ name : 'BanJi', type : 'string' },
+  				{ name : 'Birth', type : 'date', dateFormat : 'Y-m-d' }] });
+		//创建数据源 
+		var store = Ext.create('Ext.data.Store', {
+			//分页大小 
+			pageSize : 50,
+			model : 'MyData',
+			//是否在服务端排序 
+			remoteSort : true,
+			proxy : {
+				type : 'ajax',
+				url : 'data/mydata.txt',
+				reader : { root : 'items', type:'json'},
+				simpleSortMode : true },
+			sorters : [
+				{
+				//排序字段。 
+				property : 'hits',
+				//排序类型，默认为 ASC 
+				direction : 'DESC' }
+			] });
+		//创建Grid 
+		var grid = Ext.create('Ext.grid.Panel', {
+			store : store,
+			columns : [
+				{ text : "姓名", width : 120, dataIndex : 'UserName', sortable : true },
+				{ text : "性别", flex : 1, dataIndex : 'Sex', sortable : false },
+				{ text : "年龄", width : 100, dataIndex : 'Age', sortable : true },
+				{ text : "学号", width : 100, dataIndex : 'XueHao', sortable : true },
+				{ text : "班级", width : 100, dataIndex : 'BanJi', sortable : true },
+				{ text : "生日", width : 200, dataIndex : 'Birth', sortable : true }
+			],
+			height : 400,
+			width : 520,
+			x : 20,
+			y : 40,
+			title : 'ExtJS4 Grid 分页示例',
+			disableSelection : true,
+			loadMask : true,
+			renderTo : 'demo',
+			viewConfig : { id : 'gv', trackOver : false, stripeRows : false },
+			bbar : Ext.create('Ext.PagingToolbar', {
+				store : store,
+				displayInfo : true,
+				displayMsg : '显示 {0} - {1} 条，共计 {2} 条',
+				emptyMsg : "没有数据" }) });
+		store.loadPage(1);
+	});
+</script>
+</head>
+<body>
+	<div id="demo"></div>
+</body>
+</html>
