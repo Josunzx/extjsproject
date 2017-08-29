@@ -39,10 +39,9 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public List<UserEntity> getUsers() {
+    public List<UserEntity> getUsers(int start, int size) {
         String hql = "from UserEntity";
         Query query = this.getSession().createQuery(hql);
-        List<UserEntity> list = query.list();
-        return list;
+        return query.setFirstResult(start).setMaxResults(size).list();
     }
 }

@@ -28,8 +28,8 @@ public class UserServiceImpl implements UserSevice {
     }
 
     @Override
-    public List<UserEntity> getUsers() {
-        return this.userDao.getUsers();
+    public List<UserEntity> getUsers(int start, int size) {
+        return this.userDao.getUsers(start, size);
     }
 
 }

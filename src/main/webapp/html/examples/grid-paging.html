@@ -12,15 +12,16 @@
 		'Ext.grid.*', 'Ext.toolbar.Paging', 'Ext.data.*'
 	]);
 	Ext.onReady(function() {
-		Ext.define('MyData', { 
-			extend : 'Ext.data.Model', 			
+		Ext.define('MyData', {
+			extend : 'Ext.data.Model',
 			fields : [
-  				{ name : 'UserName', type : 'string' },
-  				{ name : 'Sex', type : 'string' },
-  				{ name : 'Age', type : 'int' },
-  				{ name : 'XueHao', type : 'string' },
-  				{ name : 'BanJi', type : 'string' },
-  				{ name : 'Birth', type : 'date', dateFormat : 'Y-m-d' }] });
+				{ name : 'username', type : 'string' },
+				{ name : 'sex', type : 'string' },
+				{ name : 'age', type : 'int' },
+				{ name : 'xuehao', type : 'string' },
+				{ name : 'banji', type : 'string' },
+				{ name : 'birth', type : 'date', dateFormat : 'Y-m-d' }
+			] });
 		//创建数据源 
 		var store = Ext.create('Ext.data.Store', {
 			//分页大小 
@@ -30,8 +31,8 @@
 			remoteSort : true,
 			proxy : {
 				type : 'ajax',
-				url : 'data/mydata.txt',
-				reader : { root : 'items', type:'json'},
+				url : '../../user/getUsers',
+				reader : { root : 'items', totalProperty : 'count', type : 'json' },
 				simpleSortMode : true },
 			sorters : [
 				{
@@ -44,15 +45,15 @@
 		var grid = Ext.create('Ext.grid.Panel', {
 			store : store,
 			columns : [
-				{ text : "姓名", width : 120, dataIndex : 'UserName', sortable : true },
-				{ text : "性别", flex : 1, dataIndex : 'Sex', sortable : false },
-				{ text : "年龄", width : 100, dataIndex : 'Age', sortable : true },
-				{ text : "学号", width : 100, dataIndex : 'XueHao', sortable : true },
-				{ text : "班级", width : 100, dataIndex : 'BanJi', sortable : true },
-				{ text : "生日", width : 200, dataIndex : 'Birth', sortable : true }
+				{ text : "姓名", width : 120, dataIndex : 'username', sortable : true },
+				{ text : "性别", flex : 1, dataIndex : 'sex', sortable : false },
+				{ text : "年龄", width : 100, dataIndex : 'age', sortable : true },
+				{ text : "学号", width : 100, dataIndex : 'xuehao', sortable : true },
+				{ text : "班级", width : 100, dataIndex : 'banji', sortable : true },
+				{ text : "生日", width : 200, dataIndex : 'birth', sortable : true }
 			],
 			height : 400,
-			width : 520,
+			width : 700,
 			x : 20,
 			y : 40,
 			title : 'ExtJS4 Grid 分页示例',

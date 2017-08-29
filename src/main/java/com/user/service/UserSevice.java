@@ -9,5 +9,5 @@ public interface UserSevice {
 
     UserEntity getUserById(int id);
 
-    List<UserEntity> getUsers();
+    List<UserEntity> getUsers(int start, int size);
 }
