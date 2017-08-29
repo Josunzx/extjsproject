@@ -1,8 +1,11 @@
 Ext.define('User', {
 	extend : 'Ext.data.Model',
 	fields : [
-		'id', 'name'
+		'id', 'username'
 	],
+	//在model中使用proxy有如下好处：
+	//1.使每个使用User模型类的存储类实例以相同方式加载数据，这样能避免必须为每个存储类实例复制相同代理方式的定义。
+	//2.可以不必使用存储类来加载和保存模型数据
 	proxy : {
 		type : 'rest',
 		url : '/firstMaven/user/getUsers',

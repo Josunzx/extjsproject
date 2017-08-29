@@ -1,5 +1,7 @@
 package com.user.dao.impl;
 
+import java.util.List;
+
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -26,5 +28,21 @@ public class UserDaoImpl implements UserDao {
             .setString("username", username);
         UserEntity user = (UserEntity) query.uniqueResult();
         return user;
+    }
+
+    @Override
+    public UserEntity getUserById(int id) {
+        String hql = "from UserEntity where id=:id";
+        Query query = this.getSession().createQuery(hql).setInteger("id", id);
+        UserEntity user = (UserEntity) query.uniqueResult();
+        return user;
+    }
+
+    @Override
+    public List<UserEntity> getUsers() {
+        String hql = "from UserEntity";
+        Query query = this.getSession().createQuery(hql);
+        List<UserEntity> list = query.list();
+        return list;
     }
 }

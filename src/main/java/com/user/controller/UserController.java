@@ -1,7 +1,10 @@
 package com.user.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -15,9 +18,20 @@ public class UserController {
     @Autowired
     private UserSevice userService;
 
-    @RequestMapping("/getUser")
-    public @ResponseBody UserEntity test() {
-        UserEntity user = this.userService.getUserByName("admin");
+    @RequestMapping("/getUserbyName/{username}")
+    public @ResponseBody List<UserEntity> getUsers() {
+        return this.userService.getUsers();
+    }
+
+    @RequestMapping("/getUserbyName/{username}")
+    public @ResponseBody UserEntity getUserbyName(@PathVariable String username) {
+        UserEntity user = this.userService.getUserByName(username);
+        return user;
+    }
+
+    @RequestMapping("/getUserbyId/{id}")
+    public @ResponseBody UserEntity getUserbyId(@PathVariable int id) {
+        UserEntity user = this.userService.getUserById(id);
         return user;
     }
 }
