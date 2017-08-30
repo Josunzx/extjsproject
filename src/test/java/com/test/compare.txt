@@ -1,0 +1,1 @@
+['MANAGE_CREATE', '账号申请'], ['MANAGE_FORMAL', '转正申请'], ['MANAGE_CHANGE', '转岗申请'], ['MANAGE_LEAVE', '离职申请']
