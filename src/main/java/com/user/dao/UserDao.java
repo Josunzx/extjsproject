@@ -11,4 +11,6 @@ public interface UserDao {
     UserEntity getUserById(int id);
 
     List<UserEntity> getUsers(int start, int size);
+
+    int getCount();
 }

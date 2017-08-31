@@ -44,4 +44,11 @@ public class UserDaoImpl implements UserDao {
         Query query = this.getSession().createQuery(hql);
         return query.setFirstResult(start).setMaxResults(size).list();
     }
+
+    @Override
+    public int getCount() {
+        String hql = "select count(*) from UserEntity";
+        Query query = this.getSession().createQuery(hql);
+        return (int) (long) query.uniqueResult();
+    }
 }

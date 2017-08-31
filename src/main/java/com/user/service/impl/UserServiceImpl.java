@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.user.dao.UserDao;
 import com.user.entity.UserEntity;
 import com.user.service.UserSevice;
+import com.util.Page;
 
 @Service
 @Transactional(rollbackFor = Exception.class)
@@ -28,8 +29,13 @@ public class UserServiceImpl implements UserSevice {
     }
 
     @Override
-    public List<UserEntity> getUsers(int start, int size) {
-        return this.userDao.getUsers(start, size);
+    public Page<UserEntity> getUsers(int start, int size) {
+        Page<UserEntity> page = new Page<>();
+        int count = this.userDao.getCount();
+        page.setCount(count);
+        List<UserEntity> list = this.userDao.getUsers(start, size);
+        page.setItems(list);
+        return page;
     }
 
 }

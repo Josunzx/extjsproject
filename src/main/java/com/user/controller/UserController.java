@@ -1,7 +1,5 @@
 package com.user.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,10 +22,7 @@ public class UserController {
     public @ResponseBody Page<UserEntity> getUsers(@RequestParam(
             defaultValue = "0") int start,
             @RequestParam(defaultValue = "25") int size) {
-        List<UserEntity> users = this.userService.getUsers(start, size);
-        Page<UserEntity> page = new Page<UserEntity>();
-        page.setCount(100);
-        page.setItems(users);
+        Page<UserEntity> page = this.userService.getUsers(start, size);
         return page;
     }
 
