@@ -12,7 +12,7 @@ import com.user.service.UserSevice;
 import com.util.Page;
 
 @Controller
-@RequestMapping("user")
+@RequestMapping("/user")
 public class UserController {
 
     @Autowired
@@ -21,8 +21,8 @@ public class UserController {
     @RequestMapping("/getUsers")
     public @ResponseBody Page<UserEntity> getUsers(@RequestParam(
             defaultValue = "0") int start,
-            @RequestParam(defaultValue = "25") int size,
-            @RequestParam() String query) {
+            @RequestParam(defaultValue = "25") int size, @RequestParam(
+                    required = false) String query) {
         System.out.println("查询条件为：" + query);
         Page<UserEntity> page = this.userService.getUsers(start, size);
         return page;
