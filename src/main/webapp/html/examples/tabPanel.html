@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>tabPanel</title>
+<link rel="stylesheet" type="text/css"
+	href="../../resources/css/ext-all.css">
+<link rel="stylesheet" type="text/css" href="../../css/example.css">
+<script type="text/javascript" src="../../js/common/bootstrap.js"></script>
+<script type="text/javascript" src="../../js/common/ext-lang-zh_CN.js"></script>
+<script type="text/javascript">
+	Ext.require('Ext.tab.*');
+	Ext
+	.onReady(function() {
+		//第一种方式创建 
+		var tabs = Ext.createWidget('tabpanel', {
+			renderTo : Ext.getBody(),
+			width : 450,
+			activeTab : 0,
+			margin : '50 10 50 80',
+			defaults : { bodyPadding : 10 },
+			items : [
+				{
+				//contentEl:'script',//将指定容器中的内容加载到tabPanel的内容区  
+				title : 'Tabs-1', closable : true, html : 'Tabs-1内容。' },
+				{ title : 'Tabs-2', closable : false, html : 'Tabs-2内容' }
+			] });
+		//第二种方式创建 
+		var tabs2 = Ext
+		.create('Ext.tab.Panel', {
+			renderTo : document.body,
+			activeTab : 0,
+			width : 600,
+			height : 250,
+			plain : true,
+			margin : '0 10 0 80',
+			defaults : { autoScroll : true, bodyPadding : 10 },
+			items : [
+				{ title : 'Tabs-1', html : "这里显示内容" },
+				{
+					title : '异步加载内容',
+					loader : { url : '../../user/getUsers', contentType : 'html', loadMask : true },
+					listeners : { activate : function(tab) {
+						tab.loader.load();
+					} } },
+				{
+					title : '异步加载内容1',
+					loader : {
+						url : '../../user/getUsers',
+						contentType : 'html',
+						autoLoad : true,
+						params : 'foo=123&bar=abc' } },
+				{
+					title : '点击触发事件',
+					listeners : { activate : function(tab) {
+						alert(tab.title);
+					} },
+					html : "点击Tab之后，触发事件，监听事件：activate。activate可传递两个参数。1、Ext.Component this。2、Object options " },
+				{ title : 'Tabs不可用', disabled : true }
+			] })
+	});
+</script>
+</head>
+<body>
+
+</body>
+</html>
