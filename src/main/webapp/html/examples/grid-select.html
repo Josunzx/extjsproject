@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>grid多选/全选</title>
+<title>grid多选/全选(多选请按住Ctrl键)</title>
 <link rel="stylesheet" type="text/css"
 	href="../../resources/css/ext-all.css">
 <style type="text/css">
@@ -111,7 +111,7 @@
 		var grid = Ext
 		.create('Ext.grid.Panel', {
 			store : store,
-			selModel : {selType : 'checkboxmodel'},
+			selModel : selModel,
 			columnLines : true,
 			columns : [
 				{ text : "姓名", width : 100, dataIndex : 'username', sortable : true },
@@ -133,10 +133,11 @@
 			width : 700,
 			x : 20,
 			y : 40,
-			title : 'ExtJS4 SearchGrid-Grid 搜索',
-// 			disableSelection : false,//值为TRUE，表示禁止选择行 
+			title : 'ExtJS4 SearchGrid-Grid 多选',
+// 			disableSelection : true,//值为TRUE，表示禁止选择行 
 			frame : true,//True 为 Panel 填充画面,默认为false.
 // 			loadMask : true,//不知道什么用
+			multiSelect : true,
 			renderTo : Ext.getBody(),
 			viewConfig : { id : 'gv', trackOver : false, stripeRows : false },//和view不兼容
 			dockedItems : [
