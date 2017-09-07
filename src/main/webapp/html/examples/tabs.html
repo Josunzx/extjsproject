@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>选项卡（tabs）</title>
+<link rel="stylesheet" type="text/css"
+	href="../../resources/css/ext-all.css">
+<link rel="stylesheet" type="text/css" href="../../css/example.css">
+<script type="text/javascript" src="../../js/common/bootstrap.js"></script>
+<script type="text/javascript" src="../../js/common/ext-lang-zh_CN.js"></script>
+<script type="text/javascript">
+	Ext.require('Ext.tab.*');
+	Ext.onReady(function() {
+		var currentItem;
+		var tabs = Ext.createWidget('tabpanel', {
+			renderTo : Ext.getBody(),
+			resizeTabs : true,
+			enableTabScroll : true,
+			margin : '10',
+			width : 600,
+			height : 250,
+			defaults : { autoScroll : true, bodyPadding : 10 },
+			items : [
+				{ title : '选项卡', html : '选项卡内容', closable : true }
+			] });
+		var index = 0;
+		function addTab(closable) {
+			++index;
+			tabs.add({
+				title : '新选项卡- ' + index,
+				html : '新选项卡内容 ' + index + '<br/><br/>',
+				closable : !!closable }).show();
+		}
+		Ext.createWidget('button', {
+			renderTo : Ext.getBody(),
+			text : '创建可关闭选项卡',
+			handler : function() {
+				addTab(true);
+			} });
+		Ext.createWidget('button', {
+			renderTo : Ext.getBody(),
+			text : '创建不可关闭选项卡',
+			handler : function() {
+				addTab(false);
+			},
+			style : 'margin-left: 8px;' });
+	});
+</script>
+</head>
+<body>
+
+</body>
+</html>
