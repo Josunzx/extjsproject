@@ -33,7 +33,18 @@
 			extend : 'Ext.data.Model',
 			fields : [
 				{ name : 'username', type : 'string' },
-				{ name : 'sex', type : 'string' },
+				{ name : 'sex', type : 'string', convert : function(val) {
+					switch (val) {
+						case true:
+							return '男';
+							break;
+						case false:
+							return '女';
+							break;
+						default:
+							return '';
+					};
+				} },
 				{ name : 'age', type : 'int' },
 				{ name : 'xuehao', type : 'string' },
 				{ name : 'banji', type : 'string' },
@@ -61,14 +72,11 @@
 				direction : 'DESC' }
 			] });
 		//下拉框数据,测试数据。 
-		var cbstore = Ext.create('Ext.data.Store', {
-			fields : [
-				'id', 'name'
-			],
-			data : [
-				{ "id" : true, "name" : "男" },
-				{ "id" : false, "name" : "女" },
-			] });
+		var cbstore = Ext.create('Ext.data.Store', { fields : [
+			'id', 'name'
+		], data : [
+			{ "id" : true, "name" : "男" }, { "id" : false, "name" : "女" },
+		] });
 		//创建多选 
 		var selModel = Ext.create('Ext.selection.CheckboxModel');
 		var cellEditing = Ext
