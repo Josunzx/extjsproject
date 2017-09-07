@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>文件上传</title>
+<link rel="stylesheet" type="text/css"
+	href="../../resources/css/ext-all.css">
+<script type="text/javascript" src="../../js/common/bootstrap.js"></script>
+<script type="text/javascript" src="../../js/common/ext-lang-zh_CN.js"></script>
+<script type="text/javascript">
+	Ext.onReady(function() {
+		Ext.create('Ext.form.Panel', {
+			title : '文件上传示例--MHZG.NET',
+			width : 400,
+			bodyPadding : 10,
+			margin : '50 10 50 80',
+			frame : true,
+			renderTo : Ext.getBody(),
+			items : [
+				{
+					xtype : 'filefield',
+					name : 'fileName',
+					fieldLabel : '上传',
+					labelWidth : 50,
+					msgTarget : 'side',
+					allowBlank : false,
+					anchor : '100%',
+					buttonOnly : true,
+					buttonText : '选择文件',
+					listeners: {
+						change : function(){
+							alert("文件上传");
+						}
+					}
+				}
+			]
+		});
+	});
+</script>
+</head>
+<body>
+
+</body>
+</html>

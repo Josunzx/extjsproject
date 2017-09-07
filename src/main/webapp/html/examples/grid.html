@@ -11,7 +11,8 @@
 	Ext.require([
 		'Ext.grid.*', 'Ext.data.*'
 	]);
-	Ext.onReady(function() {
+	Ext
+	.onReady(function() {
 		Ext.define('MyData', {
 			extend : 'Ext.data.Model',
 			fields : [
@@ -20,7 +21,8 @@
 				{ name : 'Age', type : 'int' },
 				{ name : 'XueHao', type : 'string' },
 				{ name : 'BanJi', type : 'string' },
-				{ name : 'Birth', type : 'date', dateFormat : 'Y-m-d' } //获取的数据转换为Date对象
+				//获取的数据转换为Date对象
+				{ name : 'Birth', type : 'date', dateFormat : 'Y-m-d' }
 			] });
 		//创建数据源 
 		var store = Ext.create('Ext.data.Store', {
@@ -31,19 +33,80 @@
 				url : 'data/mydata.txt',
 				reader : { type : 'json', root : 'items' } },
 			autoLoad : true });
+		var fileForm = Ext.create('Ext.form.Panel', {
+			renderTo : 'demo',
+			items : [
+				{
+					xtype : 'filefield',
+					name : 'fileName',
+					// 					fieldLabel : '上传',
+					id : 'fileButton',
+					labelWidth : 50,
+					msgTarget : 'side',
+					allowBlank : false,
+					anchor : '100%',
+					hidden : true,
+					buttonOnly : true,
+					buttonText : '选择文件',
+					enableKeyEvents : true,
+					listeners : { change : function(obj) {
+						alert(obj + "文件上传");
+					}, keyup : function() {
+						alert("组件失去焦点");
+					} } }
+			] });
 		//创建Grid 
-		var grid = Ext.create('Ext.grid.Panel', {
+		var grid = Ext
+		.create('Ext.grid.Panel', {
 			store : store,
 			columns : [
 				{ text : "姓名", width : 120, dataIndex : 'UserName', sortable : true },
-				{ text : "性别", flex : 1, dataIndex : 'Sex', sortable : false },
+				{ text : "性别", width : 80, dataIndex : 'Sex', sortable : false },
 				{ text : "年龄", width : 100, dataIndex : 'Age', sortable : true },
 				{ text : "学号", width : 100, dataIndex : 'XueHao', sortable : true },
 				{ text : "班级", width : 100, dataIndex : 'BanJi', sortable : true },
-				{ text : "生日", width : 200, dataIndex : 'Birth', sortable : true }
+				{ text : "生日", width : 200, dataIndex : 'Birth', sortable : true },
+				{
+					text : "操作",
+					xtype : 'actioncolumn',
+					width : 50,
+					items : [
+						{
+							icon : '/firstMaven/examples/shared/icons/fam/add.png',
+							handler : function(grid, rowIndex, colIndex) {
+								Ext.getCmp('fileButton').fileInputEl.dom.click();
+							} },
+						{
+							icon : '/firstMaven/examples/shared/icons/fam/cog_edit.png',
+							handler : function(grid, rowIndex, colIndex) {
+								var rec = grid.getStore().getAt(rowIndex);
+								alert("Edit " + rec.get('UserName'));
+							} }
+					] },
+				{
+					text : "上传",
+					width : 130,
+					align : "center",
+					renderer : function(value) {
+						return '<a href=javascript:void(0) class=upload >上传</a>';
+					} }
 			],
+			listeners : { cellClick : function(thisTab, td, cellIndex, record, tr, rowIndex, event, eventObj) {
+				//获取事件的目标对象。
+				//getTarget(selector, maxDepth, returnEl)
+				//    selector : String
+				//    (可选) 一个简易的选择符，用于筛选目标或查找目标的父级元素
+				//    maxDepth : Number/HTMLElement
+				//    (可选) 搜索的最大深度，数字或是元素(默认为 10 || document.body)
+				//    returnEl : Boolean
+				//    (可选) True表示为返回Ext.Element的对象而非DOM节点
+				var link = event.getTarget('.upload');//
+				if (link) {
+					Ext.getCmp('fileButton').fileInputEl.dom.click();
+				}
+			} },
 			height : 400,
-			width : 700,
+			width : 1800,
 			x : 20,
 			y : 40,
 			title : 'ExtJS4 Grid示例',
