@@ -4,5 +4,11 @@
     "id": "1",
     "iconCls": "manage",
     "leaf": true
+  },
+  {
+    "text": "第二个菜单",
+    "id": "2",
+    "iconCls": "folder",
+    "leaf": true
   }
 ]

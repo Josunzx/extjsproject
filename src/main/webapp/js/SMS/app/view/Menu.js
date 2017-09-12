@@ -2,6 +2,7 @@
  * Created by zhengchaoqun on 2017/9/11.
  */
 Ext.define('SMS.view.Menu', {
+    alias : 'widget.menu',
     extend : 'Ext.tree.Panel',
     initComponent : function () {
         Ext.apply(this, {
@@ -24,4 +25,4 @@ Ext.define('SMS.view.Menu', {
         });
         this.callParent(arguments);
     }
-})
+});

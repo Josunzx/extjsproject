@@ -8,6 +8,6 @@ Ext.define('SMS.store.Menus', {
     },
     proxy : {
         type : 'ajax',
-        url : '../../Data/Menu/0.json'
+        url : 'Data/Menu/0.json'
     }
-})
+});

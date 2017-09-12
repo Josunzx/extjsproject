@@ -8,6 +8,6 @@ Ext.application({
     appFolder : 'app',//真实的项目目录，最好为该app.js的相对路径
     autoCreateViewport : true,//设置为true，默认加载view/Viewport.js，Extjs4.02a版本以后默认为false
     controllers : [
-        'Main'
+        'Menu'
     ]
 });
